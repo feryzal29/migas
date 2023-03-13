@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\CategoriesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +21,9 @@ Route::get('/', function () {
 
 Route::controller(AdminDashboardController::class)->group(function (){
     Route::get('admin/dashboard','index');
+});
+
+Route::controller(CategoriesController::class)->group(function (){
+    Route::get('admin/categories','index')->name('categories.index');
+    Route::post('admin/categories','store')->name('categories.store');
 });
