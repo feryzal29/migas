@@ -34,39 +34,27 @@
                   <strong>{{ $message }}</strong>
                 </div>  
               @endif
-            <h3 class="card-title">Data Categories</h3>
-            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target=".bd-example-modal-lg">Tambah Data</button>
+            <h3 class="card-title">Categories</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="tambahcategories" class="table table-bordered table-striped">
-              <thead>
-              <tr>
-                <th>Nama</th>
-                <th>Slug</th>
-                <th>Action</th>
-              </tr>
-              </thead>
-              <tbody>
-                @foreach ($data as $item)
-                <tr>
-                  <td>{{ $item->name }}</td>
-                  <td>{{ $item->slug }}</td>
-                  <td>
-                    <a href="{{ route('categories.show',$item->id) }}" class="btn btn-success">Show</a>
-                    <a onclick="return confirm('Are you sure?')" href="{{ route('categories.delete', $item->id) }}" class="btn btn-danger">Delete</a>
-                  </td>
-                </tr>   
-                @endforeach
-              </tbody>
-              <tfoot>
-              <tr>
-                <th>Nama</th>
-                <th>Slug</th>
-                <th>Action</th>
-              </tr>
-              </tfoot>
-            </table>
+            <form action="{{ route('categories.update',$data->id) }}" method="post">
+              @csrf
+              @method('put')
+            <div class="form-group">
+              <label>Nama</label>
+              <input type="text" class="form-control" name="name" value="{{ $data->name }}">
+            </div>
+            <div class="form-group">
+              <label>Slug</label>
+              <input type="text" class="form-control" name="slug" value="{{ $data->slug }}">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-success float-right" value="Ganti">
+            </div>
+            </form>
+          </div>
+            
           </div>
           <!-- /.card-body -->
         </div>
@@ -104,7 +92,6 @@
       </div>
     </div>
   </div>
-  
   
 
   @endsection

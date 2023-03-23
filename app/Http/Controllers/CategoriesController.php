@@ -48,6 +48,7 @@ class CategoriesController extends Controller
     public function show($id)
     {
         $data = Categories::findOrFail($id);
+        return view('admin.categoriesEdit',compact('data'));
     }
 
     /**
@@ -63,14 +64,26 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Categories $categories)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'slug'=>'required',
+        ]);
+
+        $categories->updateOrFail([
+            'name'=>$request->name,
+            'slug'=>$request->slug,
+        ]);
+       
+        return redirect('admin/categories')->with(['success'=>'Data Berhasil diganti']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categories $categories)
+    public function destroy($id)
     {
-        //
+        $data = Categories::findOrfail($id);
+        $data->delete();
+        return redirect('/admin/categories');
     }
 }

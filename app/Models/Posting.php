@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Posting extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'categories_id',
+        'judul',
+        'slug',
+        'path_image',
+        'isi',
+        'status_active'
+    ];
+
+    public function categories(){
+        return $this->belongsTo(Categories::class,'categories_id','id');
+    }
+}

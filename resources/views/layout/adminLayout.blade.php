@@ -25,7 +25,9 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.css') }}">
-
+   <!-- Select2 -->
+  <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/select2/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -220,15 +222,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('posting.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Artikel</p>
+                  <p>Postingan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <a href="{{ route('posting.list') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan Tahunan</p>
+                  <p>List Postingan</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -371,10 +373,10 @@
   @yield('container')
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2023<a href="https://adminlte.io"> kurva.id</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
+      <b>Version</b> 1.0.0
     </div>
   </footer>
 
@@ -433,6 +435,10 @@
 <script src="{{ asset('AdminLte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('AdminLte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('AdminLte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<!-- Summernote -->
+<script src="{{ asset('AdminLte/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('AdminLte/plugins/select2/js/select2.full.min.js') }}"></script>
 
 <script>
   $(function () {
@@ -449,7 +455,23 @@
       "autoWidth": false,
       "responsive": true,
     });
+
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+
+    $('.select2').select2()
+
+          //Initialize Select2 Elements
+          $('.select2bs4').select2({
+            theme: 'bootstrap4'
+          });
   });
 </script>
+
 </body>
 </html>
