@@ -12,7 +12,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $profile = Profile::find(1);
+        return view('admin.profileView',compact(['profile']));
     }
 
     /**
@@ -20,7 +21,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.profile');
     }
 
     /**
@@ -28,15 +29,46 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'judul' => 'required',
+            'isi' => 'required',
+            'slug' => 'required',
+            'path_image' => 'required',
+            'path_image.*' => 'jpg,jpeg,png|max:2000'
+        ]);
+        $id = 1;
+        // $fileName = time().$request->file('path_image')->getClientOriginalName();
+        // $path = $request->file('path_image')->storeAs($fileName);
+        // $gambar = '/public/Images/'.$path;
+
+        // $image_path = $request->file('path_image')->store('Images', 'public');
+
+        $imageName = time().'.'.$request->path_image->extension();
+        $uploadedImage = $request->path_image->move(public_path('Images'), $imageName);
+        $imagePath = 'images/' . $imageName;
+
+        Profile::updateOrCreate(
+            ['id' => $id],
+            [
+            'id'=>$id,
+            'judul' => $request->judul,
+            'categories_id' => $request->categories,
+            'slug' => $request->slug,
+            'isi' => $request->isi,
+            'path_image' => $imagePath,
+            ]
+        );
+        
+        return redirect()->back()->with(['success'=>'Data Berhasil ditambah']);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Profile $profile)
+    public function show($id)
     {
-        //
+        $data = Profile::find($id);
+        return view('admin.profileShow',compact(['data']));
     }
 
     /**
@@ -52,7 +84,26 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        //
+        $request->validate([
+            'judul' => 'required',
+            'isi' => 'required',
+            'slug' => 'required',
+            'path_image' => 'required',
+            'path_image.*' => 'jpg,jpeg,png|max:2000'
+        ]);
+
+        $imageName = time().'.'.$request->path_image->extension();
+        $uploadedImage = $request->path_image->move(public_path('Images'), $imageName);
+        $imagePath = 'images/' . $imageName;
+
+        $profile->updateOrFail([
+            'judul' => $request->judul,
+            'slug' => $request->slug,
+            'isi' => $request->isi,
+            'path_image' => $imagePath
+        ]);
+       
+        return redirect('/admin/postingList')->with(['success'=>'Data Berhasil diganti']);
     }
 
     /**

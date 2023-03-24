@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class VisiMisiMoto extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
-        'judul',
-        'slug',
+        'visi',
+        'misi',
+        'moto',
         'path_image',
-        'isi',
     ];
 }

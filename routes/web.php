@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostingController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,12 @@ Route::controller(PostingController::class)->group(function (){
     Route::post('admin/posting','store')->name('posting.post');
     Route::put('admin/posting/{posting}/update','update')->name('posting.update');
     Route::get('admin/posting/{id}/delete','destroy')->name('posting.delete');
+});
+
+Route::controller(ProfileController::class)->group(function (){
+    Route::get('admin/profile/view','index')->name('profile.view');
+    Route::get('admin/{id}/profile','show')->name('profile.priview');
+    Route::get('admin/profile','create')->name('profile.create');
+    Route::post('admin/profile','store')->name('profile.post');
+    Route::put('admin/profile/{profile}/update','update')->name('profile.update');
 });
