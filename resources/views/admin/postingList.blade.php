@@ -35,7 +35,7 @@
                 </div>  
               @endif
             <h3 class="card-title">List Postingan</h3>
-            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target=".bd-example-modal-lg">Tambah Data</button>
+            {{-- <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target=".bd-example-modal-lg">Tambah Data</button> --}}
           </div>
           <!-- /.card-header -->
           <div class="card-body">

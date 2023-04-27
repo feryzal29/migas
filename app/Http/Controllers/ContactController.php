@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VisiMisiMoto;
+use App\Models\contact;
 use Illuminate\Http\Request;
 
-class VisiMisiMotoController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class VisiMisiMotoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(VisiMisiMoto $visiMisiMoto)
+    public function show(contact $contact)
     {
         //
     }
@@ -42,7 +42,7 @@ class VisiMisiMotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(VisiMisiMoto $visiMisiMoto)
+    public function edit(contact $contact)
     {
         //
     }
@@ -50,7 +50,7 @@ class VisiMisiMotoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, VisiMisiMoto $visiMisiMoto)
+    public function update(Request $request, contact $contact)
     {
         //
     }
@@ -58,7 +58,7 @@ class VisiMisiMotoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(VisiMisiMoto $visiMisiMoto)
+    public function destroy(contact $contact)
     {
         //
     }

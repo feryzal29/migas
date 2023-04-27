@@ -46,37 +46,21 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>GRESIK MIGAS</h1>
+        <h1>{{ $header->site_name }}</h1>
       </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a class="get-a-quote" href="get-a-quote.html">Get a Quote</a></li>
+          <li><a href="/" class="{{ (request()->is('/')) ? 'active' : '' }}">Home</a></li>
+          <li><a href="{{ route('about') }}" class="{{ (request()->is('profile')) ? 'active' : '' }}">Profile</a></li>
+          <li><a href="{{ route('posting') }}" class="{{ (request()->is('posting')) ? 'active' : '' }}">Posting</a></li>
+          <li><a href="{{ route('gallery-video') }}" class="{{ (request()->is('gallery-video')) ? 'active' : '' }}">Gallery Video</a></li>
+          <li><a href="{{ route('gallery-photos') }}" class="{{ (request()->is('gallery-photos')) ? 'active' : '' }}">Gallery Photos</a></li>
+          <li><a href="{{ route('contact') }}" class="{{ (request()->is('contact')) ? 'active' : '' }}">Contact</a></li>
         </ul>
+        
       </nav><!-- .navbar -->
 
     </div>
@@ -90,38 +74,27 @@
 
     <div class="container">
       <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-info">
+        <div class="col-lg-6 col-md-12 footer-info">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span>Logis</span>
+            <span>{{ $header->site_name }}</span>
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <p>PT Gresik Migas atau sering disebut dengan PTGM adalah merupakan Badan Usaha Milik Daerah (BUMD) Kabupaten Gresik</p>
           <div class="social-links d-flex mt-4">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="https://twitter.com/gresikmigas" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.instagram.com/gresikmigas/?hl=id" class="instagram"><i class="bi bi-instagram"></i></a>
           </div>
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
+        <div class="col-lg-3 col-10 footer-links">
           <h4>Useful Links</h4>
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Posting</a></li>
+            <li><a href="#">Gallery Video</a></li>
+            <li><a href="#">Gallery Photos</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </div>
 
@@ -142,7 +115,7 @@
 
     <div class="container mt-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>Logis</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Kurva</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -170,6 +143,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('Logis/assets/js/main.js')}}"></script>
+  
 
 </body>
 

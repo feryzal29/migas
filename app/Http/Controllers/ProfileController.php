@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\myteam;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,12 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+
     public function index()
     {
         $profile = Profile::find(1);
