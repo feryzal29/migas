@@ -39,11 +39,19 @@
 
         <div class="row gy-4">
             @foreach ($video as $data)
-            @php $path = Storage::url('images/'.$data->path_image); @endphp
+            @php $path = Storage::url('Images/'.$data->path_image); @endphp
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
-                <img src="{{ asset('Images/migas.jpeg') }}" class="img-fluid" alt="">
-                <a href="https://www.youtube.com/watch?v=_1ZWYKnak9k" class="glightbox play-btn"></a>
+              @php
+                  $url = $data->link_video;
+                  $final = str_replace('https://www.youtube.com/watch?v=', '', $url);
+                @endphp
+              <div class="col-lg-10 position-relative align-self-start order-lg-last order-first">
+                <div class="youtube" id="{{ $final }}" src="{{ asset($data->path_image) }}" style="width:400px; height:294px;"></div>
+                {{-- @php
+                  $url = $data->link_video;
+                  $final = str_replace('watch?v=', 'embed/', $url);
+                @endphp
+                  <iframe  allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" src="{{ $final }}"></iframe><img border="0" height="0" src="{{ asset($data->path_image) }}" width="0" /> --}}
               </div>
               </div><!-- End Card Item -->                
             @endforeach

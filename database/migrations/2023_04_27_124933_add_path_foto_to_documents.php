@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contacts', function (Blueprint $table) {
-            $table->id();
-            $table->string('location');
-            $table->string('email');
-            $table->string('phone');
-            $table->text('map')->nullable();
-            $table->timestamps();
+        Schema::table('documents', function (Blueprint $table) {
+            $table->text('path_foto');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contacts');
+        Schema::table('documents', function (Blueprint $table) {
+            //
+        });
     }
 };

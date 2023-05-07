@@ -42,8 +42,9 @@
           </div>
         </div>
 
+         @php $path = Storage::url('images/'.$header->path_logo); @endphp
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-          <img src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
+          <img src="{{ asset($header->path_logo) }}" class="img-fluid mb-3 mb-lg-0" alt="">
         </div>
 
       </div>

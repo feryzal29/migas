@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class contact extends Model
+class Document extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
-        'location',
-        'email',
-        'phone',
-        'map'
+        'judul',
+        'path_file',
+        'path_foto',
+        'jenis',
     ];
 }
-

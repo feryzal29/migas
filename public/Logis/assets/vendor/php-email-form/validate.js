@@ -59,6 +59,7 @@
       return response.text();
     })
     .then(data => {
+      console.log(data.trim());
       thisForm.querySelector('.loading').classList.remove('d-block');
       if (data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');

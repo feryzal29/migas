@@ -12,7 +12,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $data = contact::find(1);
+        return view('admin.contact',compact('data'));
     }
 
     /**
@@ -36,7 +37,7 @@ class ContactController extends Controller
      */
     public function show(contact $contact)
     {
-        //
+
     }
 
     /**
@@ -52,7 +53,20 @@ class ContactController extends Controller
      */
     public function update(Request $request, contact $contact)
     {
-        //
+        $request->validate([
+            'location'=>'required',
+            'email'=>'required',
+            'phone'=>'required',
+            'map'=>'required'
+        ]);
+        $contact->updateOrFail([
+            'location' => $request->location,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'map' => $request->map,
+        ]);
+
+        return back()->with(['success'=>'Data Berhasil diganti']);
     }
 
     /**

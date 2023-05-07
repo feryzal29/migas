@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('Logis/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('Logis/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{asset('Logis/assets/img/logo_migas.png')}}" rel="icon">
+  <link href="{{asset('Logis/assets/img/logo_migas.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@
 
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <img src="{{asset('Logis/assets/img/logo_migas.png')}}" alt="">
         <h1>{{ $header->site_name }}</h1>
       </a>
 
@@ -56,9 +56,16 @@
           <li><a href="/" class="{{ (request()->is('/')) ? 'active' : '' }}">Home</a></li>
           <li><a href="{{ route('about') }}" class="{{ (request()->is('profile')) ? 'active' : '' }}">Profile</a></li>
           <li><a href="{{ route('posting') }}" class="{{ (request()->is('posting')) ? 'active' : '' }}">Posting</a></li>
-          <li><a href="{{ route('gallery-video') }}" class="{{ (request()->is('gallery-video')) ? 'active' : '' }}">Gallery Video</a></li>
           <li><a href="{{ route('gallery-photos') }}" class="{{ (request()->is('gallery-photos')) ? 'active' : '' }}">Gallery Photos</a></li>
+          <li><a href="{{ route('gallery-video') }}" class="{{ (request()->is('gallery-video')) ? 'active' : '' }}">Gallery Video</a></li>
+          <li class="dropdown"><a href="#"><span>Hubungan Investor</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="#">Pemegang Saham</a></li>
+              <li><a href="#">Laporan Tahunan</a></li>
+            </ul>
+          </li>
           <li><a href="{{ route('contact') }}" class="{{ (request()->is('contact')) ? 'active' : '' }}">Contact</a></li>
+          <li><a href="{{ route('download') }}" class="{{ (request()->is('download')) ? 'active' : '' }}">Download</a></li>
         </ul>
         
       </nav><!-- .navbar -->
@@ -89,23 +96,21 @@
         <div class="col-lg-3 col-10 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Posting</a></li>
-            <li><a href="#">Gallery Video</a></li>
-            <li><a href="#">Gallery Photos</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="{{ route('about') }}">Profile</a></li>
+            <li><a href="{{ route('posting') }}">Posting</a></li>
+            <li><a href="{{ route('gallery-photos') }}">Gallery Photos</a></li>
+            <li><a href="{{ route('gallery-video') }}">Gallery Video</a></li>
+            <li><a href="{{ route('contact') }}">Contact</a></li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
           <p>
-            A108 Adam Street <br>
-            New York, NY 535022<br>
-            United States <br><br>
-            <strong>Phone:</strong> +1 5589 55488 55<br>
-            <strong>Email:</strong> info@example.com<br>
+            {{ $contact->location }} <br>
+            <strong>Phone:</strong> {{ $contact->phone }}<br>
+            <strong>Email:</strong> {{ $contact->email }}<br>
           </p>
 
         </div>
@@ -143,6 +148,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('Logis/assets/js/main.js')}}"></script>
+  <script type="text/javascript" src="https://codegena.com/assets/js/youtube-embed.js"></script>
   
 
 </body>

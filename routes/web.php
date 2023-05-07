@@ -4,8 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ClientWebController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MyteamController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\PostingController;
@@ -25,10 +29,11 @@ use App\Http\Controllers\VisiMisiMotoController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
+//client
 Route::controller(ClientWebController::class)->group(function (){
     Route::get('/','index')->name('index');
     Route::get('profile','about')->name('about');
@@ -37,7 +42,15 @@ Route::controller(ClientWebController::class)->group(function (){
     Route::get('gallery-video','gallery_video')->name('gallery-video');
     Route::get('gallery-photos','gallery_photos')->name('gallery-photos');
     Route::get('contact','contact')->name('contact');
+    Route::get('download','download')->name('download');
+    Route::get('download/{id}/downloadFile','downloadFile')->name('download.file');
 });
+
+Route::controller(MessageController::class)->group(function (){
+    Route::post('message-post','store')->name('message.post');
+});
+
+//end client
 
 //admin dashboard
 
@@ -110,6 +123,24 @@ Route::controller(FaqController::class)->group(function (){
     Route::post('admin/faq-post','store')->name('faq-post.post')->middleware('role:admin');
     Route::put('admin/{faq}/faq-update','update')->name('faq-update.update')->middleware('role:admin');
     Route::get('admin/{faq}/faq-delete','destroy')->name('faq-delete.delete')->middleware('role:admin');
+});
+
+Route::controller(ContactController::class)->group(function (){
+    Route::get('admin/contact','index')->name('contact.index')->middleware('role:admin');
+    Route::put('admin/{contact}/contact','update')->name('contact.update')->middleware('role:admin');
+});
+
+Route::controller(HeaderController::class)->group(function (){
+    Route::get('admin/header','index')->name('header.index')->middleware('role:admin');
+    Route::put('admin/{header}/header','update')->name('header.update')->middleware('role:admin');
+});
+
+Route::controller(DocumentController::class)->group(function (){
+   Route::get('admin/dokumen','index')->name('dokumen.index')->middleware('role:admin');
+   Route::get('admin/dokumen-create','create')->name('dokumen.create')->middleware('role:admin');
+   Route::post('admin/dokumen-post','store')->name('dokumen.post')->middleware('role:admin');
+   Route::get('admin/{id}/dokumen','downloadFile')->name('dokumen.download')->middleware('role:admin');
+   Route::get('admin/{document}/dokumen-delete','destroy')->name('dokumen.destroy')->middleware('role:admin');
 });
 
 //end admin dashboard

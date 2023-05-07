@@ -116,9 +116,6 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset('AdminLTE/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-        </div>
         <div class="info">
           <a href="#" class="d-block">Admin Utama</a>
         </div>
@@ -141,7 +138,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                POST
+                Posting
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -149,13 +146,13 @@
               <li class="nav-item">
                 <a href="{{ route('posting.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Postingan</p>
+                  <p>Konten</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('posting.list') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Postingan</p>
+                  <p>List Konten</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -177,21 +174,21 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
+                <a href="{{ route('dokumen.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
+                  <p>Upload File</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/layout/fixed-footer.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
+                  <p>Pertanyaan Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
+                  <p>Pertanyaan Sudah Dibaca</p>
                 </a>
               </li>
             </ul>
@@ -233,6 +230,18 @@
                 <a href="{{ route('myteams.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>My Teams</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('contact.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Contact</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('header.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Header Setting</p>
                 </a>
               </li>
             </ul>
