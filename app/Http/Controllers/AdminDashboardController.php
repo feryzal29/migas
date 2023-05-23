@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\adminDashboard;
 use App\Http\Controllers\Controller;
+use App\Models\Message;
+use App\Models\photo;
+use App\Models\Posting;
+use App\Models\video;
 use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller
@@ -19,7 +23,15 @@ class AdminDashboardController extends Controller
 
     public function index()
     {
-        return view('admin.index');
+        $posting = Posting::all();
+        $gambar = photo::all();
+        $video = video::all();
+        $message = Message::all();
+        $postingCount = $posting->count();
+        $gamparCount = $gambar->count();
+        $videoCount = $video->count();
+        $messageCount = $message->count();
+        return view('admin.index',compact(['postingCount','gamparCount','videoCount','messageCount']));
     }
 
     /**

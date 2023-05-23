@@ -180,15 +180,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                <a href="{{ route('message.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pertanyaan Masuk</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pertanyaan Sudah Dibaca</p>
                 </a>
               </li>
             </ul>
@@ -246,7 +240,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
@@ -304,7 +298,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
 
 
 
@@ -387,11 +381,13 @@
 <script src="{{ asset('AdminLte/plugins/select2/js/select2.full.min.js') }}"></script>
 
 <script>
+  
   $(function () {
     $("#tambahcategories").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#tambahcategories_wrapper .col-md-6:eq(0)');
+    
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
@@ -401,6 +397,18 @@
       "autoWidth": false,
       "responsive": true,
     });
+
+    $("#messagesDataTables").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": false
+    })
+
+
+
+
+    
 
     $('#summernote').summernote()
     $('#summernote2').summernote()

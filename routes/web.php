@@ -48,6 +48,9 @@ Route::controller(ClientWebController::class)->group(function (){
 
 Route::controller(MessageController::class)->group(function (){
     Route::post('message-post','store')->name('message.post');
+    Route::get('messages','index')->name('message.index')->middleware('role:user|admin');
+    Route::get('messages/{message}/show','show')->name('message.show')->middleware('role:user|admin');
+
 });
 
 //end client

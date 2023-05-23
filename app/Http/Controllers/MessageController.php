@@ -10,9 +10,19 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $data = Message::query()
+        ->when($request->status,function($query,$status){
+            $query->when($status == 'sudah-dibaca', function($query){
+                $query->whereNotNull('read_at');
+
+            }, function($query){
+                $query->whereNull('read_at');
+            });
+        })
+        ->get();
+        return view('admin.message',compact(['data']));
     }
 
     /**
@@ -51,7 +61,8 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        $message->update(['read_at' =>now()]);
+        return view('admin.messageShow',compact('message'));
     }
 
     /**
