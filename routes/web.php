@@ -33,9 +33,12 @@ use App\Http\Controllers\VisiMisiMotoController;
 //     return view('index');
 // });
 
+//template
+
 //client
 Route::controller(ClientWebController::class)->group(function (){
     Route::get('/','index')->name('index');
+    Route::get('template','template')->name('template');
     Route::get('profile','about')->name('about');
     Route::get('posting','posting')->name('posting');
     Route::get('posting/{id}/details','detail_posting')->name('postdetail');
